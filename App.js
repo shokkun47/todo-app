@@ -3,11 +3,10 @@ import {
   FlatList,
   StyleSheet,
   Text,
-  TextInput,
-  TouchableOpacity,
   View,
 } from "react-native";
-import { Icon } from "react-native-elements";
+import TaskItem from "./components/TaskItem";
+import TaskInput from "./components/TaskInput";
 
 export default function App() {
   const [taskText, setTaskText] = useState("");
@@ -39,46 +38,26 @@ export default function App() {
     setTasks(tasks.filter((task) => task.id !== id));
   };
 
-  const renderTask = ({ item }) => {
-    return (
-      <View style={styles.task}>
-        <Text style={styles.taskText}>{item.text}</Text>
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity
-            style={styles.editButton}
-            onPress={() => handleEdit(item)}
-          >
-            <Icon name="edit" color="#4caf50">
-              編集
-            </Icon>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.deleteButton}
-            onPress={() => handleDelete(item.id)}
-          >
-            <Icon name="delete" color="#f44336">
-              削除
-            </Icon>
-          </TouchableOpacity>
-        </View>
-      </View>
-    )
-  };
-
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Todoアプリ</Text>
-      <TextInput
-        placeholder="タスクを入力"
-        style={styles.input}
-        onChangeText={setTaskText}
-        value={taskText}
+      <TaskInput
+        taskText={taskText}
+        setTaskText={setTaskText}
+        handleSaveTask={handleSaveTask}
+        isEditing={isEditing}
       />
-      <TouchableOpacity style={styles.saveButton} onPress={handleSaveTask}>
-        <Text style={styles.saveButtonText}>{isEditing ? "編集" : "追加"}</Text>
-      </TouchableOpacity>
-
-      <FlatList data={tasks} renderItem={renderTask} />
+      <FlatList
+        data={tasks} 
+        renderItem={({ item }) => (
+          <TaskItem
+            item={item}
+            handleEdit={handleEdit}
+            handleDelete={handleDelete}
+          />
+        )}
+        keyExtractor={(item) => item.id}
+      />
     </View>
   );
 }
