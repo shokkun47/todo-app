@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "react-native-sample-app",
-    "slug": "react-native-for-youtube",
+    "name": "todo-app-with-reactnative",
+    "slug": "todo-app-with-reactnative",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -16,23 +16,29 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.shincode.reactnativeforyoutube"
+      "bundleIdentifier": "com.shokkun47.todoappwithreactnative"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.shincode.reactnativeforyoutube"
+      "package": "com.shokkun47.todoappwithreactnative"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "3d46a8e7-c73e-4360-ac8c-516eb2c38ef1"
+        "projectId": "cda84f5e-3cb2-4f75-ba92-aadbe05cda6c"
       }
     },
-    "owner": "shincode"
+    "owner": "shokkun47",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/cda84f5e-3cb2-4f75-ba92-aadbe05cda6c"
+    }
   }
 }

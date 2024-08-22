@@ -7,7 +7,7 @@ import {
   } from "react-native";
 import { Icon } from "react-native-elements";
   
-const TaskItem = ({ item, handleEdit, handleDelete }) => {
+const TaskItem = React.memo(({ item, handleEdit, handleDelete }) => {
     return (
         <View style={styles.task}>
             <Text style={styles.taskText}>{item.text}</Text>
@@ -30,8 +30,8 @@ const TaskItem = ({ item, handleEdit, handleDelete }) => {
                 </TouchableOpacity>
             </View>
         </View>
-    )
-}
+    );
+});
 
 const styles = StyleSheet.create({
     task: {
